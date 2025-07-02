@@ -15,8 +15,7 @@ local function get_server_configs()
         vim.notify(string.format("Error loading table from %s: %s %s", filename, result, vim.log.levels.ERROR))
       end
     end
-
-    return configs
+return configs
 end
 
 --- Configure Diagnostics
@@ -45,8 +44,15 @@ local function configure_diagnostics()
                 end,
             },
         },
+        float = {
+            border = 'rounded'
+        }
     })
 end
+
+--- Configure Handlers
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
 --- Setup keymaps for Client when it attaches to a buffer
 ---@param client vim.lsp.Client
