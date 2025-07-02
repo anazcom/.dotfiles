@@ -1,5 +1,6 @@
 -- For any questions regarding options
 -- You can use command: :opt
+--
 
 -- Search
 vim.opt.incsearch = true
