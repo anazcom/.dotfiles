@@ -71,12 +71,9 @@ local function on_attach(client, bufnr)
     local methods = vim.lsp.protocol.Methods
 
     keymap("<leader>ca", vim.lsp.buf.code_action, "LSP Code Action", { "n", "x" })
-    --keymap('grr', '<cmd>FzfLua lsp_references<cr>', 'vim.lsp.buf.references()')
-    keymap('gD', vim.lsp.buf.references , 'vim.lsp.buf.references()')
-    --keymap('gy', '<cmd>FzfLua lsp_typedefs<cr>', 'Go to type definition')
-    keymap('gy', vim.lsp.buf.type_definition, 'Go to type definition')
-    --keymap('<leader>fs', '<cmd>FzfLua lsp_document_symbols<cr>', 'Document symbols')
-    keymap('<leader>fs', vim.lsp.buf.document_symbol , 'Document symbols')
+    keymap('grr', '<cmd>FzfLua lsp_references<cr>', 'LSP References')
+    keymap('gy', '<cmd>FzfLua lsp_typedefs<cr>', 'LSP Type Definitions')
+    keymap('<leader>fs', '<cmd>FzfLua lsp_document_symbols<cr>', 'Document symbols')
 
     keymap('[d', function()
         vim.diagnostic.jump { count = -1 }
@@ -93,11 +90,10 @@ local function on_attach(client, bufnr)
 
      if client.supports_method(methods.textDocument_definition) then
         keymap('gd', function()
-            vim.lsp.buf.definition()
-            --require('fzf-lua').lsp_definitions { jump1 = true }
+            require('fzf-lua').lsp_definitions { jump1 = true }
         end, 'Go to definition')
         keymap('gD', function()
-            --require('fzf-lua').lsp_definitions { jump1 = false }
+            require('fzf-lua').lsp_definitions { jump1 = false }
         end, 'Peek definition')
     end
 
