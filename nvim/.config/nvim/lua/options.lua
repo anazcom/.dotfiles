@@ -2,7 +2,7 @@
 -- You can use command: :opt
 --
 
---vim.o.winborder = 'rounded' --available in nvim 0.11
+vim.o.winborder = 'rounded' --available in nvim 0.11
 
 -- Search
 vim.opt.incsearch = true

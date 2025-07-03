@@ -1,9 +1,17 @@
-
 ---@type vim.lsp.ClientConfig
 return {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
-    root_markers = vim.fs.root(0, { '.luarc.json', '.luarc.jsonc', '.git' }) ,
+    root_dir = vim.fs.root(0,{
+        '.luarc.json',
+        '.luarc.jsonc',
+        '.luacheckrc',
+        '.stylua.toml',
+        'stylua.toml',
+        'selene.toml',
+        'selene.yml',
+        '.git',
+    }),
     settings = {
         Lua = {
             completion = { callSnippet = 'Replace' },
