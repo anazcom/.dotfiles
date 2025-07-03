@@ -103,11 +103,10 @@ local function on_attach(client, bufnr)
 
      if client.supports_method(methods.textDocument_signatureHelp) then
         keymap('<C-k>', function()
-            -- Close the completion menu first (if open).
-            -- if require('blink.cmp.completion.windows.menu').win:is_open() then
-            --     require('blink.cmp').hide()
-            -- end
-
+            --Close the completion menu first (if open).
+            if require('blink.cmp.completion.windows.menu').win.is_open() then
+                require('blink.cmp').hide()
+            end
             vim.lsp.buf.signature_help()
         end, 'Signature help', 'i')
     end
@@ -128,6 +127,11 @@ local function on_attach(client, bufnr)
             callback = vim.lsp.buf.clear_references,
         })
     end
+
+    -- Configure Capabilities
+    -- Need to include blink capabilities within LSP Client
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities(nil, true))
 end
 
 configure_diagnostics()

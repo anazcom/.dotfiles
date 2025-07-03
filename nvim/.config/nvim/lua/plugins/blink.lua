@@ -1,20 +1,15 @@
 return {
   'saghen/blink.cmp',
-  -- dependencies = { 'LuaSnip' },
-  event = 'InsertEnter',
   version = '1.*',
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
       keymap = {
-        ['<CR>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = { 'accept', 'fallback' },
         ['<C-\\>'] = { 'hide', 'fallback' },
-        ['<C-n>'] = { 'select_next', 'show' },
-        ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
-        ['<C-p>'] = { 'select_prev' },
-        ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' }
+        ['<C-j>'] = { 'select_next', 'snippet_forward', 'scroll_documentation_down', 'fallback' },
+        ['<C-k>'] = { 'select_prev', 'scroll_documentation_up', 'fallback' },
     },
     appearance = {
       nerd_font_variant = 'mono'
@@ -23,7 +18,10 @@ return {
         menu = { border = 'rounded' },
         list = {
             -- Insert items while navigating the completion list.
-            selection = { preselect = false, auto_insert = true },
+            selection = {
+                preselect = true,
+                auto_insert = true
+            },
             max_items = 10,
         },
         documentation = {
@@ -38,14 +36,7 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lsp', 'path', 'snippets'},
     },
   },
-  config = function(_, opts)
-      require('blink.cmp').setup(opts)
-
-      -- Extend neovim's client capabilities with the completion ones.
-      vim.lsp.config('*', { capabilities = require('blink.cmp').get_lsp_capabilities(nil, true) })
-  end
-
 }
