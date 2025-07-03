@@ -6,19 +6,24 @@
 ---@type LspConfiguration[]
 local config = {
     lua_ls = {
-        location = "lsp.configs.lua_ls",
+        location = "lsp.lua_ls",
         enabled = true,
         ensure_installed = { 'lua-language-server', 'stylua' }
     },
     angularls = {
-        location = "lsp.configs.angularls",
+        location = "lsp.angularls",
         enabled = true,
         ensure_installed = { 'angular-language-server', 'prettier' }
     },
     ts_ls = {
-        location = "lsp.configs.ts_ls",
+        location = "lsp.ts_ls",
         enabled = true,
         ensure_installed = { 'typescript-language-server', 'prettier' }
+    },
+    pyright = {
+        location = "lsp.pyright",
+        enabled = true,
+        ensure_installed = { 'pyright', 'ruff' }
     }
 }
 
