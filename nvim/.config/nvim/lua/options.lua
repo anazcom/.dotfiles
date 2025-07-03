@@ -2,6 +2,8 @@
 -- You can use command: :opt
 --
 
+--vim.o.winborder = 'rounded' --available in nvim 0.11
+
 -- Search
 vim.opt.incsearch = true
 vim.opt.ignorecase = true --ignore case when using a search pattern
