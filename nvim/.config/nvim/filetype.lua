@@ -1,5 +1,5 @@
 vim.filetype.add({
-    pattern = {
-        ['tsconfig*.json'] = 'jsonc'
-    }
+	pattern = {
+		["tsconfig*.json"] = "jsonc",
+	},
 })
