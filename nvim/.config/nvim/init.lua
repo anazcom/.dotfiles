@@ -20,7 +20,13 @@ require("options")
 
 -- Setup lazy.nvim
 require("lazy").setup({
-	spec = { { import = "plugins" } },
+	spec = {
+		{ import = "plugins" },
+		{ import = "lsp.lua_ls" },
+		{ import = "lsp.angularls" },
+		{ import = "lsp.ts_ls" },
+		{ import = "lsp.pyright" },
+	},
 	install = { missing = true },
 	checker = { enabled = true },
 	change_detection = {
