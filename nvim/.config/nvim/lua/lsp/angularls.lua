@@ -30,8 +30,7 @@ local default_ng_dir = vim.fn.stdpath('data') .. '/mason/packages/angular-langua
 local default_ts_dir = vim.fn.stdpath('data') .. '/mason/packages/typescript-language-server/node_modules'
 local default_angular_core_version = get_angular_core_version(vim.fn.getcwd())
 
----@type vim.lsp.ClientConfig
-return {
+vim.lsp.config("angularls", {
     cmd = {
       'ngserver',
       '--stdio',
@@ -44,4 +43,19 @@ return {
     },
     filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
     root_dir = vim.fs.root(0, {'angular.json'})
+})
+
+vim.lsp.enable("angularls", true)
+
+require("lsp.ts_ls")
+
+return {
+	"whoissethdaniel/mason-tool-installer.nvim",
+	opts = function(_, opts)
+		if opts.ensured_installed then
+			table.insert(opts.ensured_installed, {"angular-language-server", "prettier"})
+		end
+	end,
 }
+
+
