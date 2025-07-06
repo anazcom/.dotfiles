@@ -1,52 +1,63 @@
 local dap_icons = require("utils.icons").dap
 
 return {
-
 	"mfussenegger/nvim-dap",
-	config = function()
-		vim.keymap.set("n", "<F5>", function()
-			require("dap").continue()
-		end)
-		vim.keymap.set("n", "<F10>", function()
-			require("dap").step_over()
-		end)
-		vim.keymap.set("n", "<F11>", function()
-			require("dap").step_into()
-		end)
-		vim.keymap.set("n", "<F12>", function()
-			require("dap").step_out()
-		end)
-		vim.keymap.set("n", "<Leader>bb", function()
-			require("dap").toggle_breakpoint()
-		end)
-		vim.keymap.set("n", "<Leader>bl", function()
-			require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-		end)
-		vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-			require("dap.ui.widgets").hover()
-		end)
-		vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-			require("dap.ui.widgets").preview()
-		end)
-		vim.keymap.set("n", "<Leader>df", function()
-			local widgets = require("dap.ui.widgets")
-			widgets.centered_float(widgets.frames)
-		end)
-		vim.keymap.set("n", "<Leader>ds", function()
-			local widgets = require("dap.ui.widgets")
-			widgets.centered_float(widgets.scopes)
-		end)
+	dependencies = {
+		-- taken from https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/plugins/dap.lua
+		{
+			"igorlfs/nvim-dap-view",
 
-		vim.fn.sign_define("DapBreakpoint", { text = dap_icons.Breakpoint, texthl = "ErrorMsg", linehl = "", numhl = "" })
-		vim.fn.sign_define(
-			"DapBreakpointCondition",
-			{ text = dap_icons.BreakpointCondition, texthl = "ErrorMsg", linehl = "", numhl = "" }
-		)
-		vim.fn.sign_define("DapLogPoint", { text = dap_icons.BreakpointLog, texthl = "ErrorMsg", linehl = "", numhl = "" })
-		vim.fn.sign_define("DapStopped", { text = dap_icons.BreakpointStopped, texthl = "ErrorMsg",  linehl = "", numhl = "" })
-		vim.fn.sign_define(
-			"DapBreakpointRejected",
-			{ text = dap_icons.BreakpointRejected, texthl = "ErrorMsg", linehl = "", numhl = "" }
-		)
+			---@module 'dap-view'
+			---@type dapview.Config
+			opts = {
+				winbar = {
+					sections = { "scopes", "breakpoints", "threads", "exceptions", "repl", "console" },
+					default_section = "scopes",
+				},
+				windows = { height = 18 },
+				-- When jumping through the call stack, try to switch to the buffer if already open in
+				-- a window, else use the last window to open the buffer.
+				switchbuf = "usetab,uselast",
+			},
+		},
+
+		-- Virtual Text when Debugging
+		{
+			"theHamsta/nvim-dap-virtual-text",
+			opts = { virt_text_pos = "eol" },
+		},
+	},
+	keys = {
+            -- stylua: ignore start
+            { '<leader>db', function() require('dap').toggle_breakpoint() end, desc = 'Toggle breakpoint' },
+            { '<F5>', function() require('dap').continue() end, desc = 'Continue' },
+            { '<F10>', function() require('dap').step_over() end, desc = 'Step over' },
+            { '<F11>', function() require('dap').step_into() end, desc = 'Step into' },
+            { '<F12>', function() require('dap').step_out() end, desc = 'Step Out' },
+		-- stylua: ignore end
+	},
+	config = function()
+		local dap = require("dap")
+		local dv = require("dap-view")
+
+		-- Automatically open the UI when a new debug session is created.
+		dap.listeners.before.attach["dap-view-config"] = function()
+			dv.open()
+		end
+		dap.listeners.before.launch["dap-view-config"] = function()
+			dv.open()
+		end
+		dap.listeners.before.event_terminated["dap-view-config"] = function()
+			dv.close()
+		end
+		dap.listeners.before.event_exited["dap-view-config"] = function()
+			dv.close()
+		end
+
+		vim.fn.sign_define("DapBreakpoint", { text = dap_icons.Breakpoint, texthl = "ErrorMsg" })
+		vim.fn.sign_define("DapBreakpointCondition", { text = dap_icons.BreakpointCondition, texthl = "ErrorMsg" })
+		vim.fn.sign_define("DapLogPoint", { text = dap_icons.BreakpointLog, texthl = "ErrorMsg" })
+		vim.fn.sign_define("DapStopped", { text = dap_icons.BreakpointStopped, texthl = "ErrorMsg" })
+		vim.fn.sign_define("DapBreakpointRejected", { text = dap_icons.BreakpointRejected, texthl = "ErrorMsg" })
 	end,
 }

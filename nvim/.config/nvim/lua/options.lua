@@ -27,7 +27,7 @@ vim.opt.cursorline = true --highlight the screen line of the cursor
 vim.opt.laststatus = 2 --0, 1, 2 or 3; when to use a status line for the last window
 vim.opt.statusline = '%<%f %h%r%=%-14.(%l,%c %Y%) %P'
 
-vim.opt.showmode = true -- display the current mode in the status line
+vim.opt.showmode = false -- display the current mode in the status line
 
 -- Specify Register to be use when yanking. Leave '' for default
 vim.opt.clipboard = '' --"unnamed" to use the * register like unnamed register

@@ -47,29 +47,28 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap",
+		dependencies = {
+			"jbyuki/one-small-step-for-vimkind",
+			keys = {
+                -- stylua: ignore start
+				{ "<leader>dl", function() require("osv").launch({ port = 8086 }) end, desc = "Launch Lua Adapter" },
+				--stylua: ignore end
+			},
+		},
 		opts = function(_, opts)
 			local dap = require("dap")
 			local debugger = vim.fn.stdpath("data")
 				.. "/mason/packages/local-lua-debugger-vscode/extension/extension/debugAdapter.js"
 
-			dap.adapters.lua = {
-				type = "executable",
-				command = "node",
-				args = { debugger },
-			}
+			dap.adapters.nlua = function(callback, config)
+				callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+			end
 
-			dap.configurations.lua = {
+			dap.configurations["lua"] = {
 				{
-					type = "lua",
+					type = "nlua",
 					request = "attach",
-					name = "Run this file",
-					start_neovim = {},
-				},
-				{
-					type = "lua",
-					request = "attach",
-					name = "Attach to running Neovim instance (port = 8086)",
-					port = 8086,
+					name = "Attach to running Neovim instance",
 				},
 			}
 
