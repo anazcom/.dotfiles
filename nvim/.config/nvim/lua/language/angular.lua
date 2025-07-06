@@ -48,7 +48,7 @@ vim.lsp.config("angularls", {
 
 vim.lsp.enable("angularls", true)
 
-require("lsp.typescript")
+require("language.typescript")
 
 return {
 	{

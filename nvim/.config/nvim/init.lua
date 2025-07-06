@@ -22,10 +22,10 @@ require("options")
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		{ import = "lsp.lua" },
-		{ import = "lsp.angular" },
-		{ import = "lsp.typescript" },
-		{ import = "lsp.python" },
+		{ import = "language.lua" },
+		{ import = "language.angular" },
+		{ import = "language.typescript" },
+		{ import = "language.python" },
 	},
 	install = { missing = true },
 	checker = { enabled = true },
