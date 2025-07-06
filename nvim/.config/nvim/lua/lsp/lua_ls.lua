@@ -37,10 +37,43 @@ vim.lsp.config("lua-language-server", {
 vim.lsp.enable("lua-language-server", true)
 
 return {
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	opts = function(_, opts)
-		if opts.ensured_installed then
-			table.insert(opts.ensured_installed, { "lua-language-server", "stylua" })
-		end
-	end,
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		opts = function(_, opts)
+			if opts.ensured_installed then
+				table.insert(opts.ensured_installed, { "lua-language-server", "stylua", "local-lua-debugger-vscode" })
+			end
+		end,
+	},
+	{
+		"mfussenegger/nvim-dap",
+		opts = function(_, opts)
+			local dap = require("dap")
+			local debugger = vim.fn.stdpath("data")
+				.. "/mason/packages/local-lua-debugger-vscode/extension/extension/debugAdapter.js"
+
+			dap.adapters.lua = {
+				type = "executable",
+				command = "node",
+				args = { debugger },
+			}
+
+			dap.configurations.lua = {
+				{
+					type = "lua",
+					request = "attach",
+					name = "Run this file",
+					start_neovim = {},
+				},
+				{
+					type = "lua",
+					request = "attach",
+					name = "Attach to running Neovim instance (port = 8086)",
+					port = 8086,
+				},
+			}
+
+			return opts
+		end,
+	},
 }
