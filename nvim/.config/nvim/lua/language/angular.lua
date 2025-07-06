@@ -50,6 +50,8 @@ vim.lsp.enable("angularls", true)
 
 require("language.typescript")
 
+---@module "lazy"
+---@type LazySpec[]
 return {
 	{
 		"whoissethdaniel/mason-tool-installer.nvim",

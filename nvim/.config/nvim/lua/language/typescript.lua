@@ -15,11 +15,15 @@ vim.lsp.config("ts_ls", {
 
 vim.lsp.enable("ts_ls", true)
 
+---@module "lazy"
+---@type LazySpec[]
 return {
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	opts = function(_, opts)
-		if opts.ensured_installed then
-			table.insert(opts.ensured_installed, { "typescript-language-server", "prettier" })
-		end
-	end,
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		opts = function(_, opts)
+			if opts.ensured_installed then
+				table.insert(opts.ensured_installed, { "typescript-language-server", "prettier" })
+			end
+		end,
+	},
 }

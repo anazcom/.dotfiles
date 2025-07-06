@@ -27,6 +27,7 @@ vim.lsp.config("lua-language-server", {
 				checkThirdParty = false,
 				library = {
 					vim.env.VIMRUNTIME,
+                    vim.fn.stdpath("data"),
 					"${3rd}/luv/library",
 				},
 			},
@@ -36,6 +37,8 @@ vim.lsp.config("lua-language-server", {
 
 vim.lsp.enable("lua-language-server", true)
 
+---@module "lazy"
+---@type LazySpec[]
 return {
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",

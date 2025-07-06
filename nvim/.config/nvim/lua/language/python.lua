@@ -25,6 +25,8 @@ vim.lsp.config("pyright", {
 
 vim.lsp.enable("pyright", true)
 
+---@module "lazy"
+---@type LazySpec[]
 return {
 	{
 		"whoissethdaniel/mason-tool-installer.nvim",
@@ -67,5 +69,11 @@ return {
 				},
 			}
 		end,
+	},
+	{
+		"nvim-neotest/neotest",
+		---@module "neotest"
+		---@type neotest.Config
+		opts = {},
 	},
 }
