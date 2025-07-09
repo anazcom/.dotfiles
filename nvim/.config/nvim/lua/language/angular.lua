@@ -50,6 +50,12 @@ vim.lsp.enable("angularls", true)
 
 require("language.typescript")
 
+vim.filetype.add({
+	pattern = {
+		[".*%.component%.html"] = "htmlangular", -- Sets the filetype to `htmlangular` if it matches the pattern
+	},
+})
+
 ---@module "lazy"
 ---@type LazySpec[]
 return {
