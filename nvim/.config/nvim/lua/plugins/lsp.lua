@@ -70,6 +70,18 @@ local function on_attach(client, bufnr)
 		end, "Peek definition")
 	end
 
+    --only applicable for TS
+	if client:supports_method("_typescript.organizeImports") then
+		keymap("oi", function()
+			local params = {
+				command = "_typescript.organizeImports",
+				arguments = { vim.api.nvim_buf_get_name(bufnr) },
+				title = "Organize Imports",
+			}
+			vim.lsp.buf.execute_command(params)
+		end, "Organize Imports (TS)")
+	end
+
 	if client:supports_method(methods.textDocument_signatureHelp) then
 		keymap("<C-k>", function()
 			vim.lsp.buf.signature_help()
