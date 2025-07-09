@@ -25,8 +25,17 @@ vim.lsp.config("pyright", {
 
 vim.lsp.enable("pyright", true)
 
----@module "lazy"
----@type LazySpec[]
+local function get_python_path()
+	local cwd = vim.fn.getcwd()
+	local env = os.getenv("VIRTUAL_ENV")
+
+	local python_path = "/usr/bin/python"
+	if env and vim.startswith(env, cwd) then
+		python_path = env .. "/bin/python"
+	end
+end
+
+---@type LazyPluginSpec[]
 return {
 	{
 		"whoissethdaniel/mason-tool-installer.nvim",
@@ -57,23 +66,21 @@ return {
 					request = "launch",
 					name = "file",
 					program = "${file}",
-					pythonPath = function()
-						local cwd = vim.fn.getcwd()
-						local env = os.getenv("VIRTUAL_ENV")
-
-						python_path = "/usr/bin/python"
-						if env and vim.startswith(env, cwd) then
-							python_path = env .. "/bin/python"
-						end
-					end,
+					pythonPath = get_python_path(),
 				},
 			}
 		end,
 	},
 	{
 		"nvim-neotest/neotest",
-		---@module "neotest"
-		---@type neotest.Config
-		opts = {},
+		optional = true,
+		dependencies = {
+			"nvim-neotest/neotest-python",
+		},
+		opts = {
+			adapters = {
+				["neotest-python"] = {},
+			},
+		},
 	},
 }
