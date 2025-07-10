@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
 	"tpope/vim-fugitive",
-	keys = {
-		{ "n", "<leader>gs", ":Git<CR>", { noremap = true, silent = true } },
-	},
+	config = function()
+		vim.keymap.set("n", "<leader>gs", ":Git<CR>", { noremap = true, silent = true })
+	end,
 }
