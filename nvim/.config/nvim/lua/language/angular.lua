@@ -56,8 +56,14 @@ vim.filetype.add({
 	},
 })
 
----@module "lazy"
----@type LazySpec[]
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "htmlangular",
+	callback = function()
+		vim.treesitter.language.register("angular", "htmlangular") -- Register the filetype with treesitter for the `angular` language/parser
+	end,
+})
+
+---@type LazyPluginSpec[]
 return {
 	{
 		"whoissethdaniel/mason-tool-installer.nvim",
@@ -65,6 +71,8 @@ return {
 			if opts.ensured_installed then
 				table.insert(opts.ensured_installed, { "angular-language-server", "prettier" })
 			end
+
+			return opts
 		end,
 	},
 }
