@@ -5,42 +5,15 @@ local os = require("os")
 -- This will hold the Configuration
 local config = wezterm.config_builder()
 
+config.default_cursor_style = "SteadyBlock"
 config.anti_alias_custom_block_glyphs = true
-config.font = wezterm.font("JetBrainsMonoNL NFM SemiBold")
+config.font = wezterm.font("Hurmit Nerd Font Mono", { weight = "Medium" })
+config.cell_width = 0.9
+config.font_size = 15
 
-config.font_size = 14
 config.window_background_opacity = 0.95
 
-config.colors = {
-
-	foreground = "#ebdbb2",
-	background = "#1d2021",
-	cursor_bg = "#ff9b21",
-	cursor_border = "#ff9b21",
-	cursor_fg = "#1d2021",
-	selection_bg = "#665c54",
-	selection_fg = "#ebdbb2",
-	ansi = {
-		"#1d2021",
-		"#cc241d",
-		"#98971a",
-		"#d79921",
-		"#458588",
-		"#b16286",
-		"#689d6a",
-		"#a89984",
-	},
-	brights = {
-		"#928374",
-		"#fb4934",
-		"#b8bb26",
-		"#fabd2f",
-		"#83a598",
-		"#d3869b",
-		"#8ec07c",
-		"#ebdbb2",
-	},
-}
+config.color_scheme = "Catppuccin Macchiato"
 
 config.window_padding = {
 	top = 0,
@@ -61,9 +34,9 @@ config.enable_kitty_graphics = true
 
 config.keys = {
 
-    {key="LeftArrow", mods="OPT", action=wezterm.action{SendString="\x1bb"}},
-    -- Make Option-Right equivalent to Alt-f; forward-word
-    {key="RightArrow", mods="OPT", action=wezterm.action{SendString="\x1bf"}},
+	{ key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) },
+	-- Make Option-Right equivalent to Alt-f; forward-word
+	{ key = "RightArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bf" }) },
 }
 
 return config
