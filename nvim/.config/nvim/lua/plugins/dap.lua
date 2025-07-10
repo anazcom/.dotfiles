@@ -30,10 +30,9 @@ return {
 	keys = {
             -- stylua: ignore start
             { '<leader>db', function() require('dap').toggle_breakpoint() end, desc = 'Toggle breakpoint' },
-            { '<F5>', function() require('dap').continue() end, desc = 'Continue' },
-            { '<F10>', function() require('dap').step_over() end, desc = 'Step over' },
-            { '<F11>', function() require('dap').step_into() end, desc = 'Step into' },
-            { '<F12>', function() require('dap').step_out() end, desc = 'Step Out' },
+            { '<leader>ds', function() require('dap').continue() end, desc = 'Continue' },
+            { '<M-l>', function() require('dap').step_over() end, desc = 'Step over' },
+            { '<M-j>', function() require('dap').step_into() end, desc = 'Step into' },
 		-- stylua: ignore end
 	},
 	config = function()
@@ -41,18 +40,10 @@ return {
 		local dv = require("dap-view")
 
 		-- Automatically open the UI when a new debug session is created.
-		dap.listeners.before.attach["dap-view-config"] = function()
-			dv.open()
-		end
-		dap.listeners.before.launch["dap-view-config"] = function()
-			dv.open()
-		end
-		dap.listeners.before.event_terminated["dap-view-config"] = function()
-			dv.close()
-		end
-		dap.listeners.before.event_exited["dap-view-config"] = function()
-			dv.close()
-		end
+		dap.listeners.before.attach["dap-view-config"] = function() dv.open() end
+		dap.listeners.before.launch["dap-view-config"] = function() dv.open() end
+		dap.listeners.before.event_terminated["dap-view-config"] = function() dv.close() end
+		dap.listeners.before.event_exited["dap-view-config"] = function() dv.close() end
 
 		vim.fn.sign_define("DapBreakpoint", { text = dap_icons.Breakpoint, texthl = "ErrorMsg" })
 		vim.fn.sign_define("DapBreakpointCondition", { text = dap_icons.BreakpointCondition, texthl = "ErrorMsg" })
