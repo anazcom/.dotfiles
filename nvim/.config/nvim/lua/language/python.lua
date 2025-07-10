@@ -25,6 +25,9 @@ vim.lsp.config("pyright", {
 
 vim.lsp.enable("pyright", true)
 
+--- Return python path based on current environment
+--- if environment is empty then global installation
+--- @return string path Path being used
 local function get_python_path()
 	local cwd = vim.fn.getcwd()
 	local env = os.getenv("VIRTUAL_ENV")
@@ -33,6 +36,8 @@ local function get_python_path()
 	if env and vim.startswith(env, cwd) then
 		python_path = env .. "/bin/python"
 	end
+
+	return python_path
 end
 
 ---@type LazyPluginSpec[]
@@ -80,7 +85,7 @@ return {
 		opts = {
 			adapters = {
 				["neotest-python"] = {},
-			},
+			}
 		},
 	},
 }
