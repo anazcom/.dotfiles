@@ -70,9 +70,9 @@ local function on_attach(client, bufnr)
 		end, "Peek definition")
 	end
 
-    --only applicable for TS
+	--only applicable for TS
 	if client:supports_method("_typescript.organizeImports") then
-		keymap("oi", function()
+		keymap("<leader>oi", function()
 			local params = {
 				command = "_typescript.organizeImports",
 				arguments = { vim.api.nvim_buf_get_name(bufnr) },
