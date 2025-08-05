@@ -1,0 +1,13 @@
+font-family = "Hurmit Nerd Font Mono"
+font-size = 15
+adjust-cell-width = -10%
+theme = "catppuccin-macchiato"
+cursor-color = "#EB9234"
+cursor-style = "block"
+cursor-text = "#000000"
+background-opacity = 0.95
+background-blur = 10
+link-url = true
+title = ""
+window-decoration = none
+window-theme = ghostty
