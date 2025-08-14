@@ -4,8 +4,9 @@ return {
 	keys = {
 		{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
 		{ "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Grep" },
-		{ "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Help" },
-		{ "<leader>gb", "<cmd>FzfLua git_branches<cr>", desc = "Help" },
+		{ "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Tags" },
+		{ "<leader>gb", "<cmd>FzfLua git_branches<cr>", desc = "Branches" },
+		{ "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "Help" },
 	},
 	opts = function(_, opts)
 		local fzf = require("fzf-lua")
