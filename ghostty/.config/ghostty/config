@@ -11,3 +11,5 @@ link-url = true
 title = ""
 window-decoration = none
 window-theme = ghostty
+window-padding-x = 10
+window-padding-y = 10
