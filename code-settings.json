@@ -1,0 +1,409 @@
+{
+    "window.zoomLevel": 1,
+    //Editor
+    "editor.cursorStyle": "block",
+    "editor.tabSize": 4,
+    "editor.lineHeight": 24,
+    "editor.lineNumbers": "relative",
+    "editor.fontLigatures": true,
+    "editor.detectIndentation": true,
+    "editor.quickSuggestionsDelay": 0,
+    "editor.fontFamily": "Hurmit Nerd Font Mono",
+    "editor.fontWeight": "100",
+    "editor.fontSize": 13,
+    "editor.stickyScroll.enabled": true,
+    "editor.minimap.enabled": false,
+    "editor.overviewRulerBorder": false,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    //Terminal
+    "terminal.integrated.fontFamily": "Hurmit Nerd Font Mono",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontWeight": "100",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.external.windowsExec": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "terminal.integrated.defaultProfile.linux": "tmux",
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.sideBar.location": "left",
+    "workbench.iconTheme": "catppuccin-macchiato",
+    "workbench.editor.showTabs": "none",
+    "workbench.statusBar.visible": true,
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#FFA905",
+        "terminalCursor.foreground": "#FFA905"
+    },
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontFamily"
+    ],
+    //Breadcrumbs
+    "breadcrumbs.filePath": "last",
+    "breadcrumbs.symbolPath": "off",
+    //Window
+    "window.openFilesInNewWindow": "off",
+    "window.menuBarVisibility": "compact",
+    "window.newWindowProfile": null,
+    //Explorer
+    "explorer.confirmDelete": true,
+    "explorer.compactFolders": true,
+    "explorer.confirmDragAndDrop": true,
+    //Better Comments
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FFFFFF",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "#CF4642",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+    //Language Specifics
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    //Eslint
+    "eslint.workingDirectories": [
+        {
+            "mode": "auto"
+        },
+        {
+            "directory": "client"
+        }
+    ],
+    "redhat.telemetry.enabled": false,
+    //Vim
+    "vim.smartcase": true,
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.surround": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "e",
+                "l"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e",
+                "h"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        },
+        // Opens the Fugitive UI
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "s"
+            ],
+            "commands": [
+                "fugitive.open"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "b"
+            ],
+            "commands": [
+                "editor.debug.action.toggleBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "o",
+                "i"
+            ],
+            "commands": [
+                "editor.action.organizeImports"
+            ]
+        },
+        {
+            "before": [
+                "w",
+                "q"
+            ],
+            "commands": [
+                ":wq"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e",
+                "f"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "g"
+            ],
+            "commands": [
+                "workbench.action.quickTextSearch"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "b"
+            ],
+            "commands": [
+                "editor.action.format"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "<S-k>"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "v",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.terminal.focus"
+            ]
+        },
+        //Harpoon
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "a"
+            ],
+            "commands": [
+                "vscode-harpoon.addEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "w"
+            ],
+            "commands": [
+                "vscode-harpoon.editEditors"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "j"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor1"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "k"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor2"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "l"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor3"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                ";"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor4"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "<S-j>"
+            ],
+            "commands": [
+                "editor.action.moveLinesDownAction"
+            ]
+        },
+        {
+            "before": [
+                "<S-k>"
+            ],
+            "commands": [
+                "editor.action.moveLinesUpAction"
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
+    "chat.commandCenter.enabled": false,
+    "workbench.activityBar.location": "bottom",
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    "workbench.secondarySideBar.defaultVisibility": "visible",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ],
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "editor.wordWrap": "on"
+}
